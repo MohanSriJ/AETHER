@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Default Dark Mode Tokens */
+    --bg-primary: #070B14;
+    --bg-secondary: #0B1120;
+    --bg-elevated: #10192B;
+    --bg-surface: #141F33;
+    --bg-glass: rgba(11, 17, 32, 0.85);
+    --text-primary: #F3F6FC;
+    --text-secondary: #9BA9BF;
+    --text-muted: #62728D;
+    --accent-cyan: #54E7F2;
+    --accent-violet: #9D8CFF;
+    --btn-primary-bg: #54E7F2;
+    --btn-primary-text: #070B14;
+    --status-success: #42D6A4;
+    --status-warning: #FFBF69;
+    --status-danger: #FF647C;
+    --border-subtle: rgba(160, 185, 220, 0.14);
+    --border-strong: rgba(160, 185, 220, 0.28);
+    --border-accent: rgba(84, 231, 242, 0.35);
+    --grid-line: #1b2a45;
+    --grid-ground: #0c1524;
+    --chart-grid: rgba(160, 185, 220, 0.08);
+  }
+
+  .light, [data-theme="light"] {
+    /* Refined Architectural CAD Light Mode Tokens with Crisp Contrast */
+    --bg-primary: #F8FAFC;
+    --bg-secondary: #FFFFFF;
+    --bg-elevated: #FFFFFF;
+    --bg-surface: #F1F5F9;
+    --bg-glass: rgba(255, 255, 255, 0.92);
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+    --accent-cyan: #0284C7;
+    --accent-violet: #6D28D9;
+    --btn-primary-bg: #0284C7;
+    --btn-primary-text: #FFFFFF;
+    --status-success: #059669;
+    --status-warning: #D97706;
+    --status-danger: #E11D48;
+    --border-subtle: rgba(203, 213, 225, 0.8);
+    --border-strong: rgba(148, 163, 184, 0.7);
+    --border-accent: rgba(2, 132, 199, 0.5);
+    --grid-line: #cbd5e1;
+    --grid-ground: #e2e8f0;
+    --chart-grid: rgba(100, 116, 139, 0.15);
+  }
+
+  html, body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    touch-action: manipulation;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan);
+}
+
+/* Glow effects */
+.glow-cyan {
+  box-shadow: 0 0 20px -3px rgba(84, 231, 242, 0.25);
+}
+.glow-violet {
+  box-shadow: 0 0 20px -3px rgba(157, 140, 255, 0.25);
+}
+.glow-danger {
+  box-shadow: 0 0 20px -3px rgba(255, 100, 124, 0.3);
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-violet {
+  background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-violet) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Mobile Touch & Cursor Utilities */
+@media (pointer: fine) and (hover: hover) {
+  body.custom-cursor-active {
+    cursor: none;
+  }
+  body.custom-cursor-active a,
+  body.custom-cursor-active button,
+  body.custom-cursor-active input[type="range"],
+  body.custom-cursor-active [role="button"] {
+    cursor: none;
+  }
+}
+
+/* Explicitly disable custom cursor on touch/mobile devices */
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor,
+  [data-testid="interactive-cursor"],
+  .custom-cursor-element {
+    display: none !important;
+    pointer-events: none !important;
+  }
+  body, a, button, input, select, textarea, [role="button"] {
+    cursor: auto !important;
+  }
+}
+
+/* Mobile Safe Area Padding Utilities */
+.pb-safe {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+.pt-safe {
+  padding-top: max(1rem, env(safe-area-inset-top));
+}
+
+/* Minimum 44px touch targets */
+.touch-min {
+  min-height: 44px;
+  min-width: 44px;
+}
